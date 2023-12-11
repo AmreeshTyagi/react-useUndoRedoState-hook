@@ -1,9 +1,9 @@
 {
   "name": "react-useundoredostate-hook",
-  "version": "1.2.2",
+  "version": "1.2.3",
   "scripts": {
     "prebuild": "rm -rf build && tsc",
-    "build": "rm -rf dist && NODE_ENV=production rollup -c"
+    "build": "rm -rf dist && NODE_ENV=production && NODE_OPTIONS=--openssl-legacy-provider rollup -c"
   },
   "private": false,
   "description": "A lightweight module to store historical state and allow undo/redo",
