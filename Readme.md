@@ -5,7 +5,7 @@ A lightweight module to store historical state and allow undo/redo, including mu
 ## Installation
 
 ```
-npm install --save @jeremyling/react-use-undoable-state
+npm install --save @amreeshtyagi/react-useundoredostate-hook
 ```
 
 The following packages are peer dependencies and must be installed for this package to work.
@@ -21,7 +21,7 @@ Here's a code sandbox for how this hook is used: https://codesandbox.io/s/use-un
 
 ```js
 import React from "react";
-import useUndoableState from "@jeremyling/react-use-undoable-state";
+import useUndoRedoState from "@amreeshtyagi/react-useundoredostate-hook";
 
 export default function Document() {
   const {
@@ -32,7 +32,7 @@ export default function Document() {
     lastIndex: docStateLastIndex,
     goBack: undoDoc,
     goForward: redoDoc,
-  } = useUndoableState(
+  } = useUndoRedoState(
     { text: "The quick brown fox jumps over the lazy dog" }, // initial value
     500 // debounce timeout before states gets updated (optional - defaults to 500)
   );
@@ -46,7 +46,7 @@ export default function Document() {
 
 ## Concept
 
-As with useState, useUndoableState accepts only 1 argument, the initial value. Behind the scenes, the hook uses two main variables to determine state - `index` (number) and `states` (array). `states` stores the historical values of the state while `index` determines current state by indicating the current position in the array. `states` is only written to after a debounced period of `debouncePeriod` (passed as second param of hook, defaults to 500).
+As with useState, useUndoRedoState accepts only 1 argument, the initial value. Behind the scenes, the hook uses two main variables to determine state - `index` (number) and `states` (array). `states` stores the historical values of the state while `index` determines current state by indicating the current position in the array. `states` is only written to after a debounced period of `debouncePeriod` (passed as second param of hook, defaults to 500).
 
 You may navigate through historical states by using the `goBack` and `goForward` functions emitted by the hook. However, if you make a call to `setState` and `index` is not at the end of the `states` array, all states after `index` is erased and `index` will go back to the end of the `states` array.
 
@@ -61,3 +61,8 @@ The following table attempts to provide a more detailed explanation of the objec
 | lastIndex  | `number`                  |                   | The last index in the `states` array. To determine if can `goForward` |
 | goBack     | `(steps: number) => void` | goBack(2)         | Goes back the number of steps passed                                  |
 | goForward  | `(steps: number) => void` | goForward(3)      | Goes forward the number of steps passed                               |
+
+
+## Thanks to original author 
+* https://github.com/jzcling/react-use-undoable-state
+* Since original version is not supporting React 18, so I forked it and modified it to support React 18.
