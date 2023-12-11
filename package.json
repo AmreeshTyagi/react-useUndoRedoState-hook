@@ -1,6 +1,6 @@
 {
   "name": "react-useundoredostate-hook",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "scripts": {
     "prebuild": "rm -rf build && tsc",
     "build": "rm -rf dist && NODE_ENV=production rollup -c"
