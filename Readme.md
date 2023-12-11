@@ -5,7 +5,7 @@ A lightweight module to store historical state and allow undo/redo, including mu
 ## Installation
 
 ```
-npm install --save @amreeshtyagi/react-useundoredostate-hook
+npm install --save react-useundoredostate-hook
 ```
 
 The following packages are peer dependencies and must be installed for this package to work.
@@ -21,7 +21,7 @@ Here's a code sandbox for how this hook is used: https://codesandbox.io/s/use-un
 
 ```js
 import React from "react";
-import useUndoRedoState from "@amreeshtyagi/react-useundoredostate-hook";
+import useUndoRedoState from "react-useundoredostate-hook";
 
 export default function Document() {
   const {
